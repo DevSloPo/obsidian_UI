@@ -1,3 +1,11 @@
+makefolder = makefolder or function() end
+readfile = readfile or function() return "" end
+writefile = writefile or function() end
+delfile = delfile or function() end
+listfiles = listfiles or function() return {} end
+isfolder = isfolder or function() return false end
+isfile = isfile or function() return false end
+
 local cloneref = (cloneref or clonereference or function(instance: any)
     return instance
 end)
@@ -45,7 +53,7 @@ do
         ["Default"] = {
             1,
             httpService:JSONDecode(
-    [[{"FontColor":"ffffff","MainColor":"191919","AccentColor":"a2a2a2","BackgroundColor":"000000","OutlineColor":"282828"}]]
+                [[{"FontColor":"ffffff","MainColor":"191919","AccentColor":"a2a2a2","BackgroundColor":"000000","OutlineColor":"282828"}]]
 )
             ),
         },
