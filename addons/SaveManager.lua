@@ -401,7 +401,7 @@ local SaveManager = {} do
 
         local section = tab:AddRightGroupbox("配置", "folder-cog")
 
-        section:AddInput("SaveManager_ConfigName",    { Text = "Config name" })
+        section:AddInput("SaveManager_ConfigName",    { Text = "配置名称" })
         section:AddButton("创建配置", function()
             local name = self.Library.Options.SaveManager_ConfigName.Value
 
