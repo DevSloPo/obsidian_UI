@@ -11333,10 +11333,6 @@ local m
 aj.Icon"minimize"
 aj.Icon"maximize"
 
-as:CreateTopbarButton("Fullscreen","maximize",function()
-as:ToggleFullscreen()
-end,(as.Topbar.ButtonsType=="Default"and 998 or 999),nil,Color3.fromHex"#60C762")
-
 function as.ToggleFullscreen(p)
 local r=as.IsFullscreen
 
@@ -11939,7 +11935,7 @@ return F
 end
 
 
-as:CreateTopbarButton("Close","x",function()
+--[[as:CreateTopbarButton("Close","x",function()
 if not as.IgnoreAlerts then
 as:SetToTheCenter()
 as:Dialog{
@@ -11965,7 +11961,7 @@ else
 as:Destroy()
 end
 end,(as.Topbar.ButtonsType=="Default"and 999 or 997),nil,Color3.fromHex"#F4695F")
-
+]]
 function as.Tag(x,B)
 if as.UIElements.Main.Main.Topbar.Center.Visible==false then as.UIElements.Main.Main.Topbar.Center.Visible=true end
 return ap:New(B,as.UIElements.Main.Main.Topbar.Center)
