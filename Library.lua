@@ -6091,14 +6091,32 @@ function Library:CreateWindow(WindowInfo)
         WindowIcon.Visible = WindowInfo.Icon ~= nil or LayoutState.IsCompact
         LayoutRefs.WindowIcon = WindowIcon
 
-local WindowTitle = New("TextButton", {
+-- 如果用TextLabel代替TextButton是可以的
+local WindowTitle = New("TextLabel", {
     BackgroundTransparency = 1,
     Text = WindowInfo.Title,
     TextSize = 20,
-    TextColor3 = Color3.fromRGB(0, 255, 0),  
+    TextColor3 = Color3.fromRGB(255, 255, 255), -- 白色
     Visible = not LayoutState.IsCompact,
     Parent = TitleHolder,
 })
+
+local UIGradient = Instance.new("UIGradient")
+UIGradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 0)),
+    ColorSequenceKeypoint.new(0.10, Color3.fromRGB(255, 127, 0)),
+    ColorSequenceKeypoint.new(0.20, Color3.fromRGB(255, 255, 0)),
+    ColorSequenceKeypoint.new(0.30, Color3.fromRGB(0, 255, 0)),
+    ColorSequenceKeypoint.new(0.40, Color3.fromRGB(0, 255, 255)),
+    ColorSequenceKeypoint.new(0.50, Color3.fromRGB(0, 0, 255)),
+    ColorSequenceKeypoint.new(0.60, Color3.fromRGB(139, 0, 255)),
+    ColorSequenceKeypoint.new(0.70, Color3.fromRGB(255, 0, 0)),
+    ColorSequenceKeypoint.new(0.80, Color3.fromRGB(255, 127, 0)),
+    ColorSequenceKeypoint.new(0.90, Color3.fromRGB(255, 255, 0)),
+    ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 255, 0))
+}
+UIGradient.Rotation = 360
+UIGradient.Parent = WindowTitle
         if not LayoutState.IsCompact then
             local MaxTextWidth =
                 math.max(0, InitialSidebarWidth - (WindowInfo.Icon and WindowInfo.IconSize.X.Offset + 12 or 12))
