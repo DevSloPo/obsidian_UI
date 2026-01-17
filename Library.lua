@@ -254,7 +254,7 @@ local Templates = {
         Center = true,
         Resizable = true,
         SearchbarSize = UDim2.fromScale(1, 1),
-        CornerRadius = 4,
+        CornerRadius = 6,
         NotifySide = "Right",
         ShowCustomCursor = true,
         Font = Enum.Font.Code,
@@ -6091,13 +6091,14 @@ function Library:CreateWindow(WindowInfo)
         WindowIcon.Visible = WindowInfo.Icon ~= nil or LayoutState.IsCompact
         LayoutRefs.WindowIcon = WindowIcon
 
-        local WindowTitle = New("TextButton", {
-            BackgroundTransparency = 1,
-            Text = WindowInfo.Title,
-            TextSize = 20,
-            Visible = not LayoutState.IsCompact,
-            Parent = TitleHolder,
-        })
+local WindowTitle = New("TextButton", {
+    BackgroundTransparency = 1,
+    Text = WindowInfo.Title,
+    TextSize = 20,
+    TextColor3 = Color3.fromRGB(255, 0, 0),  
+    Visible = not LayoutState.IsCompact,
+    Parent = TitleHolder,
+})
         if not LayoutState.IsCompact then
             local MaxTextWidth =
                 math.max(0, InitialSidebarWidth - (WindowInfo.Icon and WindowInfo.IconSize.X.Offset + 12 or 12))
