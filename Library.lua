@@ -6091,12 +6091,11 @@ function Library:CreateWindow(WindowInfo)
         WindowIcon.Visible = WindowInfo.Icon ~= nil or LayoutState.IsCompact
         LayoutRefs.WindowIcon = WindowIcon
 
--- 如果用TextLabel代替TextButton是可以的
 local WindowTitle = New("TextLabel", {
     BackgroundTransparency = 1,
     Text = WindowInfo.Title,
     TextSize = 20,
-    TextColor3 = Color3.fromRGB(255, 255, 255), -- 白色
+    TextColor3 = Color3.fromRGB(255, 255, 255), 
     Visible = not LayoutState.IsCompact,
     Parent = TitleHolder,
 })
