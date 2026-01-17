@@ -254,7 +254,7 @@ local Templates = {
         Center = true,
         Resizable = true,
         SearchbarSize = UDim2.fromScale(1, 1),
-        CornerRadius = 6,
+        CornerRadius = 10,
         NotifySide = "Right",
         ShowCustomCursor = true,
         Font = Enum.Font.Code,
@@ -6095,7 +6095,7 @@ local WindowTitle = New("TextButton", {
     BackgroundTransparency = 1,
     Text = WindowInfo.Title,
     TextSize = 20,
-    TextColor3 = Color3.fromRGB(255, 0, 0),  
+    TextColor3 = Color3.fromRGB(0, 255, 0),  
     Visible = not LayoutState.IsCompact,
     Parent = TitleHolder,
 })
