@@ -5334,7 +5334,7 @@ Library:MakeOutline(MainFrame, WindowInfo.CornerRadius, 0)
 					Volume = 0,
 					Position = UDim2.fromScale(0, 0),
 					Size = UDim2.fromScale(1, 1),
-					ZIndex = 1, --层级
+					ZIndex = 0, --层级
 					BackgroundTransparency = 1,
 					Parent = MainFrame,
 				})
@@ -5345,7 +5345,7 @@ Library:MakeOutline(MainFrame, WindowInfo.CornerRadius, 0)
 					Position = UDim2.fromScale(0, 0),
 					Size = UDim2.fromScale(1, 1),
 					ScaleType = Enum.ScaleType.Stretch,
-					ZIndex = 1, --层级
+					ZIndex = 0, --层级
 					BackgroundTransparency = 1,
 					ImageTransparency = WindowInfo.BackgroundTransparency or 0, 
 					Parent = MainFrame,
