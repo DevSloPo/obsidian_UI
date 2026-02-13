@@ -6114,18 +6114,36 @@ UIGradient.Color = ColorSequence.new{
     ColorSequenceKeypoint.new(0.90, Color3.fromRGB(255, 255, 0)),
     ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 255, 0))
 }
-UIGradient.Rotation = 360
+UIGradient.Rotation = 0
 UIGradient.Parent = WindowTitle
-        if not LayoutState.IsCompact then
-            local MaxTextWidth =
-                math.max(0, InitialSidebarWidth - (WindowInfo.Icon and WindowInfo.IconSize.X.Offset + 12 or 12))
-            local TextWidth = Library:GetTextBounds(WindowTitle.Text, Library.Scheme.Font, 20, MaxTextWidth)
-            WindowTitle.Size = UDim2.new(0, TextWidth, 1, 0)
-        else
-            WindowTitle.Size = UDim2.new(0, 0, 1, 0)
-        end
 
-        LayoutRefs.WindowTitle = WindowTitle
+if not LayoutState.IsCompact then
+    LayoutRefs.WindowTitleGradient = UIGradient
+    
+    local gradientAnimation = game:GetService("RunService").RenderStepped:Connect(function(deltaTime)
+        if not WindowTitle:IsDescendantOf(game) or WindowTitle.Parent == nil then
+            gradientAnimation:Disconnect()
+            return
+        end
+        
+        UIGradient.Rotation = UIGradient.Rotation + (360 * deltaTime)
+        if UIGradient.Rotation >= 360 then
+            UIGradient.Rotation = UIGradient.Rotation - 360
+        end
+    end)
+    
+    LayoutRefs.GradientAnimationSpeed = 1
+    LayoutRefs.GradientAnimation = gradientAnimation
+    
+    local MaxTextWidth =
+        math.max(0, InitialSidebarWidth - (WindowInfo.Icon and WindowInfo.IconSize.X.Offset + 12 or 12))
+    local TextWidth = Library:GetTextBounds(WindowTitle.Text, Library.Scheme.Font, 20, MaxTextWidth)
+    WindowTitle.Size = UDim2.new(0, TextWidth, 1, 0)
+else
+    WindowTitle.Size = UDim2.new(0, 0, 1, 0)
+end
+
+LayoutRefs.WindowTitle = WindowTitle
 
         --// Top Right Bar
         local RightWrapper = New("Frame", {
@@ -7461,6 +7479,7 @@ UIGradient.Parent = WindowTitle
     end
 
     --// Execution \\--
+    print("obsidian ui 二改作者:小玄")
     SearchBox:GetPropertyChangedSignal("Text"):Connect(function()
         Library:UpdateSearch(SearchBox.Text)
     end)
