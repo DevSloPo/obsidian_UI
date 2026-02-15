@@ -6126,13 +6126,13 @@ if not LayoutState.IsCompact then
             return
         end
         
-        UIGradient.Rotation = UIGradient.Rotation + (360 * deltaTime)
+        UIGradient.Rotation = UIGradient.Rotation + (90 * deltaTime)
         if UIGradient.Rotation >= 360 then
             UIGradient.Rotation = UIGradient.Rotation - 360
         end
     end)
     
-    LayoutRefs.GradientAnimationSpeed = 1
+    LayoutRefs.GradientAnimationSpeed = 0.25
     LayoutRefs.GradientAnimation = gradientAnimation
     
     local MaxTextWidth =
@@ -6144,7 +6144,6 @@ else
 end
 
 LayoutRefs.WindowTitle = WindowTitle
-
         --// Top Right Bar
         local RightWrapper = New("Frame", {
             BackgroundTransparency = 1,
