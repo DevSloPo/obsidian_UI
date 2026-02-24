@@ -6437,66 +6437,49 @@ function Library:CreateWindow(WindowInfo)
         Library:MakeDraggable(MainFrame, TopBar, false, true)
 
 
-        --// Title
-        local TitleHolder = New("Frame", {
-            BackgroundTransparency = 1,
-            Size = UDim2.new(0, math.max(LayoutState.CompactWidth, InitialSidebarWidth), 1, 0),
-            Parent = TopBar,
-        })
-        New("UIListLayout", {
-            FillDirection = Enum.FillDirection.Horizontal,
-            HorizontalAlignment = Enum.HorizontalAlignment.Center,
-            VerticalAlignment = Enum.VerticalAlignment.Center,
-            Padding = UDim.new(0, 6),
-            Parent = TitleHolder,
-        })
-        LayoutRefs.TitleHolder = TitleHolder
+--// Title
+local TitleHolder = New("Frame", {
+    BackgroundTransparency = 1,
+    Size = UDim2.new(0, math.max(LayoutState.CompactWidth, InitialSidebarWidth), 1, 0),
+    Parent = TopBar,
+})
+New("UIListLayout", {
+    FillDirection = Enum.FillDirection.Horizontal,
+    HorizontalAlignment = Enum.HorizontalAlignment.Center,
+    VerticalAlignment = Enum.VerticalAlignment.Center,
+    Padding = UDim.new(0, 6),
+    Parent = TitleHolder,
+})
+LayoutRefs.TitleHolder = TitleHolder
 
-        local WindowIcon
-        if WindowInfo.Icon then
-            WindowIcon = New("ImageButton", {
-                Image = if tonumber(WindowInfo.Icon)
-                    then string.format("rbxassetid://%d", WindowInfo.Icon)
-                    else WindowInfo.Icon,
-                Size = WindowInfo.IconSize,
-                BackgroundTransparency = 1,
-                Parent = TitleHolder,
-            })
-        else
-            WindowIcon = New("TextButton", {
-                Text = WindowInfo.Title:sub(1, 1),
-                TextScaled = true,
-                Size = WindowInfo.IconSize,
-                BackgroundTransparency = 1,
-                Parent = TitleHolder,
-            })
-        end
-        WindowIcon.Visible = WindowInfo.Icon ~= nil or LayoutState.IsCompact
-        LayoutRefs.WindowIcon = WindowIcon
+local WindowIcon
+if WindowInfo.Icon then
+    WindowIcon = New("ImageButton", {
+        Image = if tonumber(WindowInfo.Icon)
+            then string.format("rbxassetid://%d", WindowInfo.Icon)
+            else WindowInfo.Icon,
+        Size = WindowInfo.IconSize,
+        BackgroundTransparency = 1,
+        Parent = TitleHolder,
+    })
+else
+    WindowIcon = New("TextButton", {
+        Text = WindowInfo.Title:sub(1, 1),
+        TextScaled = true,
+        Size = WindowInfo.IconSize,
+        BackgroundTransparency = 1,
+        Parent = TitleHolder,
+    })
+end
+WindowIcon.Visible = WindowInfo.Icon ~= nil or LayoutState.IsCompact
+LayoutRefs.WindowIcon = WindowIcon
 
-        WindowTitle = New("TextButton", {
-            BackgroundTransparency = 1,
-            Text = WindowInfo.Title,
-            TextSize = 22,
-            Visible = not LayoutState.IsCompact,
-            Parent = TitleHolder,
-        })
-        if not LayoutState.IsCompact then
-            local MaxTextWidth =
-                math.max(0, InitialSidebarWidth - (WindowInfo.Icon and WindowInfo.IconSize.X.Offset + 12 or 12))
-            local TextWidth = Library:GetTextBounds(WindowTitle.Text, Library.Scheme.Font, 20, MaxTextWidth)
-            WindowTitle.Size = UDim2.new(0, TextWidth, 1, 0)
-        else
-            WindowTitle.Size = UDim2.new(0, 0, 1, 0)
-        end
-
-        LayoutRefs.WindowTitle = WindowTitle
-        
-        local WindowTitle = New("TextLabel", {
+local WindowTitle = New("TextLabel", {
     BackgroundTransparency = 1,
     Text = WindowInfo.Title,
     TextSize = 20,
-    TextColor3 = Color3.fromRGB(255, 255, 255), 
+    TextColor3 = Color3.fromRGB(255, 255, 255),
+    Font = Enum.Font.GothamBold,
     Visible = not LayoutState.IsCompact,
     Parent = TitleHolder,
 })
@@ -6536,8 +6519,7 @@ if not LayoutState.IsCompact then
     LayoutRefs.GradientAnimationSpeed = 0.25
     LayoutRefs.GradientAnimation = gradientAnimation
     
-    local MaxTextWidth =
-        math.max(0, InitialSidebarWidth - (WindowInfo.Icon and WindowInfo.IconSize.X.Offset + 12 or 12))
+    local MaxTextWidth = math.max(0, InitialSidebarWidth - (WindowInfo.Icon and WindowInfo.IconSize.X.Offset + 12 or 12))
     local TextWidth = Library:GetTextBounds(WindowTitle.Text, Library.Scheme.Font, 20, MaxTextWidth)
     WindowTitle.Size = UDim2.new(0, TextWidth, 1, 0)
 else
