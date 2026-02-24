@@ -1,6 +1,6 @@
-local cloneref = function(instance)
+local cloneref = (cloneref or clonereference or function(instance: any)
     return instance
-end
+end)
 local CoreGui: CoreGui = cloneref(game:GetService("CoreGui"))
 local Players: Players = cloneref(game:GetService("Players"))
 local RunService: RunService = cloneref(game:GetService("RunService"))
@@ -83,7 +83,8 @@ local Library = {
         AccentColor = Color3.fromRGB(162, 162, 162),
         OutlineColor = Color3.fromRGB(40, 40, 40),
         FontColor = Color3.new(1, 1, 1),
-        Font = Font.fromEnum(Enum.Font.GothamMedium),
+        Font = Font.fromEnum(Enum.Font.Code),
+
         Red = Color3.fromRGB(255, 50, 50),
         Dark = Color3.new(0, 0, 0),
         White = Color3.new(1, 1, 1),
@@ -253,10 +254,10 @@ local Templates = {
         Center = true,
         Resizable = true,
         SearchbarSize = UDim2.fromScale(1, 1),
-        CornerRadius = 20,
+        CornerRadius = 12,
         NotifySide = "Right",
         ShowCustomCursor = true,
-        Font = Font = Enum.Font.GothamMedium,,
+        Font = Enum.Font.Code,
         ToggleKeybind = Enum.KeyCode.RightControl,
         MobileButtonsSide = "Left",
         UnlockMouseWhileOpen = true,
@@ -6124,8 +6125,8 @@ if not LayoutState.IsCompact then
             gradientAnimation:Disconnect()
             return
         end
-                
-        UIGradient.Rotation = UIGradient.Rotation + (30 * deltaTime)
+        
+        UIGradient.Rotation = UIGradient.Rotation + (90 * deltaTime)
         if UIGradient.Rotation >= 360 then
             UIGradient.Rotation = UIGradient.Rotation - 360
         end
@@ -7456,7 +7457,7 @@ LayoutRefs.WindowTitle = WindowTitle
     end
 
     if Library.IsMobile then
-        local ToggleButton = Library:AddDraggableButton("用户界面", function()
+        local ToggleButton = Library:AddDraggableButton("开关界面", function()
             Library:Toggle()
         end)
 
