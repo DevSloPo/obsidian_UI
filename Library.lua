@@ -254,10 +254,10 @@ local Templates = {
         Center = true,
         Resizable = true,
         SearchbarSize = UDim2.fromScale(1, 1),
-        CornerRadius = 12,
+        CornerRadius = 20,
         NotifySide = "Right",
         ShowCustomCursor = true,
-        Font = Enum.Font.Code,
+        Font = Font = Enum.Font.GothamMedium,,
         ToggleKeybind = Enum.KeyCode.RightControl,
         MobileButtonsSide = "Left",
         UnlockMouseWhileOpen = true,
@@ -6125,8 +6125,8 @@ if not LayoutState.IsCompact then
             gradientAnimation:Disconnect()
             return
         end
-        
-        UIGradient.Rotation = UIGradient.Rotation + (90 * deltaTime)
+                
+        UIGradient.Rotation = UIGradient.Rotation + (30 * deltaTime)
         if UIGradient.Rotation >= 360 then
             UIGradient.Rotation = UIGradient.Rotation - 360
         end
@@ -7457,7 +7457,7 @@ LayoutRefs.WindowTitle = WindowTitle
     end
 
     if Library.IsMobile then
-        local ToggleButton = Library:AddDraggableButton("开关界面", function()
+        local ToggleButton = Library:AddDraggableButton("用户界面", function()
             Library:Toggle()
         end)
 
