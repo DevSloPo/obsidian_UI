@@ -187,14 +187,14 @@ local Library = {
     MinSize = Vector2.new(480, 360),
     DPIScale = 1,
     CornerRadius = 20,
-
+    
     IsLightTheme = false,
     Scheme = {
-        BackgroundColor = Color3.fromRGB(28, 28, 30),
-        MainColor = Color3.fromRGB(44, 44, 46),
-        AccentColor = Color3.fromRGB(10, 132, 255),
+        BackgroundColor = Color3.fromRGB(0, 0, 0),
+        MainColor = Color3.fromRGB(25, 25, 25),
+        AccentColor = Color3.fromRGB(162, 162, 162),
         AccentDim = Color3.fromRGB(8, 105, 204),
-        OutlineColor = Color3.fromRGB(84, 84, 88),
+        OutlineColor = Color3.fromRGB(40, 40, 40),
         FontColor = Color3.fromRGB(255, 255, 255),
         TextDim = Color3.fromRGB(235, 235, 245),
         Font = Font.fromEnum(Enum.Font.GothamMedium),
