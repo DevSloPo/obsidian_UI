@@ -7944,10 +7944,7 @@ LayoutRefs.WindowTitle = WindowTitle
             Library:Toggle()
         end)
 
-        local LockButton = Library:AddDraggableButton("锁住", function(self)
-            Library.CantDragForced = not Library.CantDragForced
-            self:SetText(Library.CantDragForced and "解锁" or "锁住")
-        end)
+
 
         if WindowInfo.MobileButtonsSide == "Right" then
             ToggleButton.Button.Position = UDim2.new(1, -6, 0, 6)
