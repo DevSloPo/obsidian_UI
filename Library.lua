@@ -6597,7 +6597,7 @@ LayoutRefs.WindowTitle = WindowTitle
 
         SearchBox = New("TextBox", {
             BackgroundColor3 = "MainColor",
-            PlaceholderText = "搜索功能",
+            PlaceholderText = "搜索...",
             Size = WindowInfo.SearchbarSize,
             TextScaled = true,
             Visible = not (WindowInfo.DisableSearch or false),
@@ -7940,7 +7940,7 @@ LayoutRefs.WindowTitle = WindowTitle
     end
 
     if Library.IsMobile then
-        local ToggleButton = Library:AddDraggableButton("用户界面", function()
+        local ToggleButton = Library:AddDraggableButton("  开关  ", function()
             Library:Toggle()
         end)
 
