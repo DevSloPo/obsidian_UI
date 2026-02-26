@@ -7938,8 +7938,8 @@ LayoutRefs.WindowTitle = WindowTitle
         task.spawn(Library.Toggle)
     end
 
-    if Library.IsMobile then
-        local ToggleButton = Library:AddDraggableButton("    开关    ", function()
+    if Library.IsMobile then                                 
+        local ToggleButton = Library:AddDraggableButton("   开关   ", function()
             Library:Toggle()
         end)
 
